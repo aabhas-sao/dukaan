@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Res } from '@nestjs/common';
+import { Body, Controller, Post, Res } from '@nestjs/common';
 import { OperatorsService } from './operators.service';
 import { OperatorsDocument } from './schemas/operators.schema';
 
@@ -8,7 +8,7 @@ export class OperatorsController {
 
   @Post('signin')
   signIn(
-    @Body() body: any,
+    @Body() body,
     @Res() res,
   ): Promise<string> | Promise<OperatorsDocument> {
     return this.operatorsService.signIn(body, res);
