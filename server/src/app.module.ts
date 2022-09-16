@@ -3,18 +3,16 @@ import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { OperatorsModule } from './operators/operators.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    MongooseModule.forRoot(
-      'mongodb+srv://aabhas:NogameNolife@cluster0.f5h10mp.mongodb.net/?retryWrites=true&w=majority',
-      {
-        dbName: 'dukaan',
-      },
-    ),
+    MongooseModule.forRoot(process.env.MONGO_URI, {
+      dbName: 'dukaan',
+    }),
+    OperatorsModule,
   ],
-
   controllers: [AppController],
   providers: [AppService],
 })
