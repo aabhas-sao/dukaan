@@ -13,7 +13,7 @@ import {StyleSheet} from 'react-native';
 import ButtonPrimary from '../../ui/button.ui';
 import Spacer from 'react-styled-spacer';
 import AddProductModal from './addProductModal';
-import {PAYMENT_METHOD_SCREEN, SERVER_BASE_URL} from '../../constants';
+import {CUSTOMER_DETAILS_SCREEN, SERVER_BASE_URL} from '../../constants';
 import axios from 'axios';
 
 const CreateOrder = ({navigation}) => {
@@ -48,7 +48,7 @@ const CreateOrder = ({navigation}) => {
       operator: '63244c79d33e9c65ab058c87',
     });
 
-    navigation.navigate(PAYMENT_METHOD_SCREEN);
+    navigation.navigate(CUSTOMER_DETAILS_SCREEN);
     setCart([]);
     setTotal([]);
   };

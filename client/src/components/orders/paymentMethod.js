@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Image} from 'react-native';
 import {
   Radio,
   RadioGroup,
@@ -9,12 +9,13 @@ import {
   Layout,
   Card,
 } from '@ui-kitten/components';
-import {CREATE_ORDER_SCREEN, PAYMENT_STATUS} from '../../constants';
+import {PAYMENT_STATUS} from '../../constants';
 import ButtonPrimary from '../../ui/button.ui';
 import Spacer from 'react-styled-spacer';
 import {StackActions} from '@react-navigation/native';
+import SuccessImage from '../../../assets/images/success.webp';
 
-const popAction = StackActions.pop(1);
+const popAction = StackActions.pop(2);
 const PaymentMethod = ({navigation}) => {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
   const [paymentStatus, setPaymentStatus] = React.useState(
@@ -67,9 +68,12 @@ const PaymentMethod = ({navigation}) => {
           {paymentStatus === PAYMENT_STATUS.PENDING ? (
             <Spinner status="primary" />
           ) : (
-            <Text category="h5" status="success">
-              Payment Succesful
-            </Text>
+            <Layout style={styles.flexCol}>
+              <Image style={styles.image} source={SuccessImage} />
+              <Text category="h5" status="success">
+                Payment Succesful
+              </Text>
+            </Layout>
           )}
         </Card>
       </Modal>
@@ -101,6 +105,14 @@ const styles = StyleSheet.create({
   modal: {
     width: '70%',
     height: '50%',
+  },
+  image: {
+    width: 150,
+    height: 150,
+  },
+  flexCol: {
+    flexDirection: 'column',
+    alignItems: 'center',
   },
 });
 

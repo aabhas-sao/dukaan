@@ -34,7 +34,11 @@ const SignIn = ({navigation, setUser}) => {
       <Spacer h={54} />
       <InputPrimary label={'Mi ID'} primaryInputState={miIDInputState} />
       <Spacer h={24} />
-      <InputPrimary label={'Password'} primaryInputState={passwordInputState} />
+      <InputPrimary
+        hideText={true}
+        label={'Password'}
+        primaryInputState={passwordInputState}
+      />
       <Spacer h={48} />
 
       <ButtonPrimary val={'sign in'} onPress={onSignIn} />

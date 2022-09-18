@@ -6,3 +6,4 @@ export const PAYMENT_STATUS = {
 
 export const CREATE_ORDER_SCREEN = 'CreateOrder';
 export const PAYMENT_METHOD_SCREEN = 'PaymentMethod';
+export const CUSTOMER_DETAILS_SCREEN = 'CustomerDetails';
