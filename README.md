@@ -12,7 +12,7 @@ Easing the billing process across all Mi outlets by allowing the store operators
 | Frontend | Database | Backend |  Deployed    |
 | :---:         |     :---:      |          :---: | :---: |
 | React Native,  UI Kitten | MongoDB | Node.js,  Nest.js | Heroku
-|  | REACT NATIVE | REACT NATIVE | 
+| ![](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png) | ![](https://www.svgrepo.com/show/331488/mongodb.svg) | ![](https://docs.nestjs.com/assets/logo-small.svg) | ![](https://img.stackshare.io/service/133/3wgIDj3j.png) |
     
 
 
