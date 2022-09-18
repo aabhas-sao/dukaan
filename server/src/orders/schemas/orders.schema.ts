@@ -15,6 +15,9 @@ export class Orders {
 
   @Prop({ type: Types.ObjectId, ref: 'customers', require: true })
   customer: Customers;
+
+  @Prop({ required: true })
+  price: number;
 }
 
 export const OrdersSchema = SchemaFactory.createForClass(Orders);

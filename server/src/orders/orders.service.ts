@@ -49,13 +49,19 @@ export class OrdersService {
   async createOrder(createOrderDTO: CreateOrderDTO) {
     let customer: Types.ObjectId | string = createOrderDTO.customer;
     let operator: Types.ObjectId | string = createOrderDTO.operator;
+    const { price, products } = createOrderDTO;
 
     customer = new Types.ObjectId(customer);
     operator = new Types.ObjectId(operator);
 
+    console.log(products);
+    products.map((id) => new Types.ObjectId(id));
+
     const order = await this.ordersModel.create({
       customer,
       operator,
+      products,
+      price,
     });
 
     await order.populate({ path: 'products' });
