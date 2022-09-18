@@ -1,4 +1,4 @@
-package com.dukaan.newarchitecture.modules;
+package com.mi.dukaan.newarchitecture.modules;
 
 import com.facebook.jni.HybridData;
 import com.facebook.react.ReactPackage;
