@@ -14,7 +14,10 @@ export class OrdersService {
   ) {}
 
   async getAllOrders() {
-    const orders = await this.ordersModel.find();
+    const orders = await this.ordersModel
+      .find()
+      .populate(['products', 'operator', 'customer'])
+      .exec();
     return orders;
   }
 
