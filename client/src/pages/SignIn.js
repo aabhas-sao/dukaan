@@ -6,13 +6,25 @@ import {Layout, Text} from '@ui-kitten/components';
 import {Image, StyleSheet} from 'react-native';
 import Spacer from 'react-styled-spacer';
 import miLogo from '../../assets/images/miLogo.png';
+import axios from 'axios';
+import {SERVER_BASE_URL} from '../constants';
 
-const SignIn = ({navigation}) => {
+const SignIn = ({navigation, setUser}) => {
   const miIDInputState = useInputState();
   const passwordInputState = useInputState();
 
   const goToSignUp = () => {
     navigation.navigate('SignUp');
+  };
+
+  const onSignIn = async () => {
+    const res = await axios.post(`${SERVER_BASE_URL}/operators/signin`, {
+      miID: miIDInputState.value,
+      password: passwordInputState.value,
+    });
+
+    console.log(res.data);
+    setUser(res.data);
   };
 
   return (
@@ -26,7 +38,7 @@ const SignIn = ({navigation}) => {
       <InputPrimary label={'Password'} primaryInputState={passwordInputState} />
       <Spacer h={48} />
 
-      <ButtonPrimary val={'sign in'} onPress={goToSignUp} />
+      <ButtonPrimary val={'sign in'} onPress={onSignIn} />
       <Spacer h={24} />
 
       <Text>
