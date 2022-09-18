@@ -23,7 +23,6 @@ const SignIn = ({navigation, setUser}) => {
       password: passwordInputState.value,
     });
 
-    console.log(res.data);
     setUser(res.data);
   };
 
@@ -31,7 +30,7 @@ const SignIn = ({navigation, setUser}) => {
     <Layout style={styles.layout}>
       <Image style={styles.logo} source={miLogo} />
       <Spacer h={48} />
-      <Text category="h3">Sign In to Mi POS Service</Text>
+      <Text category="h3">Sign in to Mi Dukaan</Text>
       <Spacer h={54} />
       <InputPrimary label={'Mi ID'} primaryInputState={miIDInputState} />
       <Spacer h={24} />

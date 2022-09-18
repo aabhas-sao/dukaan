@@ -9,7 +9,7 @@ const Authenticate = ({setUser}) => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="SignIn">
-        {props => <SignIn setUser={setUser} />}
+        {props => <SignIn {...props} setUser={setUser} />}
       </Stack.Screen>
       <Stack.Screen name="SignUp" component={SignUp} />
     </Stack.Navigator>

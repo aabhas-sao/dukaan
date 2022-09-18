@@ -25,7 +25,7 @@ const SignUp = ({navigation}) => {
       <Layout style={styles.layout}>
         <Image style={styles.logo} source={miLogo} />
         <Spacer h={48} />
-        <Text category="h3">Welcome to Mi POS Service</Text>
+        <Text category="h3">Welcome to Mi Dukaan</Text>
         <Spacer h={54} />
         <InputPrimary label={'Email'} primaryInputState={emailInputState} />
         <Spacer h={24} />
