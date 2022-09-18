@@ -11,6 +11,9 @@ export class Products {
   @Prop({ required: true })
   price: number;
 
+  @Prop({ default: 1 })
+  quantity: number;
+
   // Todo: add stock left
 
   // Todo: add capability to add multiple images
