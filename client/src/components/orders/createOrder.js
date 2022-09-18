@@ -8,12 +8,12 @@ import {
   Card,
   Modal,
 } from '@ui-kitten/components';
-import {SafeAreaView, ScrollView} from 'react-native';
+import {SafeAreaView} from 'react-native';
 import {StyleSheet} from 'react-native';
 import ButtonPrimary from '../../ui/button.ui';
 import Spacer from 'react-styled-spacer';
 import AddProductModal from './addProductModal';
-import {SERVER_BASE_URL} from '../../constants';
+import {PAYMENT_METHOD_SCREEN, SERVER_BASE_URL} from '../../constants';
 import axios from 'axios';
 
 const CreateOrder = ({navigation}) => {
@@ -40,7 +40,7 @@ const CreateOrder = ({navigation}) => {
   };
 
   const items = cart.map(item => item._id);
-  const createOrder = async () => {
+  const createOrder = async ({navigate}) => {
     await axios.post(`${SERVER_BASE_URL}/orders/create`, {
       price: total,
       customer: '63245e1261c79c6bd4fc0f9f',
@@ -48,6 +48,7 @@ const CreateOrder = ({navigation}) => {
       operator: '63244c79d33e9c65ab058c87',
     });
 
+    navigation.navigate(PAYMENT_METHOD_SCREEN);
     setCart([]);
     setTotal([]);
   };
@@ -126,7 +127,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   list: {
-    height: '50%',
+    height: '40%',
     width: '85%',
   },
   total: {

@@ -3,6 +3,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {BottomNavigation, BottomNavigationTab} from '@ui-kitten/components';
 import CreateOrder from '../components/orders/createOrder';
 import TrackOrder from '../components/orders/trackOrder';
+import OrderScreen from '../components/orders/orderScreen';
 
 const {Navigator, Screen} = createBottomTabNavigator();
 
@@ -21,7 +22,7 @@ const HomeScreen = () => {
       <Screen
         name="Create"
         options={{headerShown: false}}
-        component={CreateOrder}
+        component={OrderScreen}
       />
       <Screen
         name="Track"
