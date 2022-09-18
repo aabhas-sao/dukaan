@@ -12,7 +12,8 @@ const App = () => {
   return (
     <NavigationContainer>
       <ApplicationProvider {...eva} theme={{...eva.light, ...theme}}>
-        {user ? <HomeScreen /> : <Authenticate setUser={setUser} />}
+        {/* {user ? <HomeScreen /> : <Authenticate setUser={setUser} />} */}
+        <HomeScreen />
       </ApplicationProvider>
     </NavigationContainer>
   );

@@ -11,8 +11,22 @@ import {
 } from '@ui-kitten/components';
 import ButtonPrimary from '../../ui/button.ui';
 
-const AddProductModal = () => {
+const AddProductModal = ({
+  cart,
+  setCart,
+  products,
+  setTotal,
+  total,
+  setVisible,
+}) => {
   const [selectedIndex, setSelectedIndex] = React.useState(new IndexPath(0));
+
+  const addProduct = () => {
+    const item = products[selectedIndex - 1];
+    setCart([...cart, item]);
+    setTotal(total + item.price);
+    setVisible(false);
+  };
 
   return (
     <Card style={styles.container}>
@@ -21,16 +35,25 @@ const AddProductModal = () => {
       <Layout style={styles.container} level="1">
         <Select
           selectedIndex={selectedIndex}
-          onSelect={index => setSelectedIndex(index)}>
-          <SelectItem title="Option 1" />
-          <SelectItem title="Option 2" />
-          <SelectItem title="Option 3" />
+          value={() => {
+            return products.length ? (
+              <Text>{products[selectedIndex - 1].name}</Text>
+            ) : (
+              <Text>'Select an option'</Text>
+            );
+          }}
+          onSelect={index => {
+            setSelectedIndex(index);
+          }}>
+          {products.map((item, idx) => (
+            <SelectItem key={idx} title={item.name} />
+          ))}
         </Select>
       </Layout>
 
       <Spacer h="36" />
 
-      <ButtonPrimary val={'add product'} />
+      <ButtonPrimary val={'add product'} onPress={addProduct} />
     </Card>
   );
 };

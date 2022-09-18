@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   Text,
   Layout,
@@ -8,28 +8,53 @@ import {
   Card,
   Modal,
 } from '@ui-kitten/components';
-import {SafeAreaView} from 'react-native';
+import {SafeAreaView, ScrollView} from 'react-native';
 import {StyleSheet} from 'react-native';
 import ButtonPrimary from '../../ui/button.ui';
 import Spacer from 'react-styled-spacer';
 import AddProductModal from './addProductModal';
+import {SERVER_BASE_URL} from '../../constants';
+import axios from 'axios';
 
-const data = new Array(8).fill({
-  title: 'iPhone 13',
-  description: '$100',
-});
-
-const CreateOrder = () => {
+const CreateOrder = ({navigation}) => {
   const renderItemAccessory = props => <Text category="s1">1</Text>;
   const [visible, setVisible] = React.useState(false);
+  const [products, setProducts] = React.useState([]);
+  const [cart, setCart] = React.useState([]);
+  const [total, setTotal] = React.useState(0);
 
   const renderItem = ({item, index}) => (
     <ListItem
-      title={`${item.title} ${index + 1}`}
-      description={`${item.description} ${index + 1}`}
+      title={`${item.name}`}
+      description={`₹${item.price}`}
       accessoryRight={renderItemAccessory}
     />
   );
+
+  const getAllProducts = async () => {
+    const res = await axios.get(`${SERVER_BASE_URL}/products`);
+
+    if (res) {
+      setProducts(res.data);
+    }
+  };
+
+  const items = cart.map(item => item._id);
+  const createOrder = async () => {
+    await axios.post(`${SERVER_BASE_URL}/orders/create`, {
+      price: total,
+      customer: '63245e1261c79c6bd4fc0f9f',
+      products: items,
+      operator: '63244c79d33e9c65ab058c87',
+    });
+
+    setCart([]);
+    setTotal([]);
+  };
+
+  useEffect(() => {
+    getAllProducts();
+  }, []);
 
   return (
     <SafeAreaView>
@@ -50,7 +75,11 @@ const CreateOrder = () => {
         <Spacer h="48" />
 
         <Card style={styles.list}>
-          <List data={data} renderItem={renderItem} />
+          {cart.length ? (
+            <List data={cart} renderItem={renderItem} />
+          ) : (
+            <Text>Please add items for checkout</Text>
+          )}
         </Card>
 
         <Spacer h="12" />
@@ -61,14 +90,14 @@ const CreateOrder = () => {
               <Text category="label">Total Amount:</Text>
             </Layout>
             <Layout>
-              <Text category="label">200</Text>
+              <Text category="label">₹{total}</Text>
             </Layout>
           </Layout>
         </Card>
 
         <Spacer h="24" />
 
-        <Button status="primary" appearance="outline">
+        <Button status="primary" appearance="outline" onPress={createOrder}>
           checkout
         </Button>
       </Layout>
@@ -77,7 +106,14 @@ const CreateOrder = () => {
         backdropStyle={styles.backdrop}
         onBackdropPress={() => setVisible(false)}
         visible={visible}>
-        <AddProductModal />
+        <AddProductModal
+          setTotal={setTotal}
+          products={products}
+          setCart={setCart}
+          total={total}
+          cart={cart}
+          setVisible={setVisible}
+        />
       </Modal>
     </SafeAreaView>
   );
@@ -90,7 +126,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   list: {
-    maxHeight: '50%',
+    height: '50%',
     width: '85%',
   },
   total: {
