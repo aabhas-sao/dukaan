@@ -1,5 +1,7 @@
 # Mi Dukaan
 
+![Frame 7 1](https://user-images.githubusercontent.com/58210877/190949680-7d602668-40b8-48af-af4f-f2fcd096954c.png)
+
 ### A billing app integrated across all devices (mobiles and PCs) and outlets to be used by the vendor/operator at the Point of Sale (POS).
 
 Easing the billing process across all Mi outlets by allowing the store operators to process customer orders in real-time through various devices thereby increasing speed and efficiency and ultimately increasing customer satisfaction.
@@ -10,6 +12,12 @@ Easing the billing process across all Mi outlets by allowing the store operators
 - **_Ankush Kumar Lohani_** <br>
 
 ### A team from NIT Rourkela
+
+## Running app on an android device
+- Find the apk from the releases section
+- Login Credentials:
+  - Mi ID: 1234567892
+  - Password: NogameNolife
 
 ## Tech Stacks Used:
 
@@ -26,17 +34,32 @@ The instructions are a bit different depending on your development operating sys
 
 #### Follow the official React Native Guide: [Setup your React Native Environment](https://reactnative.dev/docs/environment-setup)
 
+- Install yarn globally
+  ```bash
+    npm i -g yarn
+    ```
+- cd in to the client folder and install packages
+  ```bash
+    cd client
+    yarn
+  ```
+ 
+- run the below script to build locally
+  ```bash
+    yarn android
+  ```
+
 ## Running Backend Server Guidelines:
 
--
 
 ### Setting up Server locally
+- Please make sure you have Nodje.js installed. It is advisable to use Node.js version 14.x or above.
 
 - install yarn globally, if not installed
 
-```bash
-npm i -g yarn
-```
+  ```bash
+  npm i -g yarn
+  ```
 
 - create an env file and specify following environment variables
 
@@ -45,6 +68,10 @@ npm i -g yarn
 
   - `PORT`: the port in which server will run on
 
-```
 
-```
+- run below script to start dev server
+
+  ```bash
+    yarn start:dev
+  ```
+ 
