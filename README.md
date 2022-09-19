@@ -13,20 +13,20 @@ Easing the billing process across all Mi outlets by allowing the store operators
 
 ### A team from NIT Rourkela
 
-## Running app on an android device
+## 📱 Running app on an android device
 - Find the apk from the releases section
 - Login Credentials:
   - Mi ID: 1234567892
   - Password: NogameNolife
 
-## Tech Stacks Used:
+## 🚀 Tech Stacks Used:
 
 |                                                Frontend                                                 |                       Database                       |                      Backend                       |                        Deployed                         |
 | :-----------------------------------------------------------------------------------------------------: | :--------------------------------------------------: | :------------------------------------------------: | :-----------------------------------------------------: |
 |                                         React Native, UI Kitten                                         |                       MongoDB                        |                  Node.js, Nest.js                  |                         Heroku                          |
 | ![](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png) | ![](https://www.svgrepo.com/show/331488/mongodb.svg) | ![](https://docs.nestjs.com/assets/logo-small.svg) | ![](https://img.stackshare.io/service/133/3wgIDj3j.png) |
 
-# Setting up the development environment:
+# ⚙️ Setting up the development environment:
 
 Follow these instructions if you need to build native code in your project. For example, if you are integrating React Native into an existing application, or if you ran "prebuild" from Expo to generate your project's native code, you'll need this section.
 
@@ -49,7 +49,7 @@ The instructions are a bit different depending on your development operating sys
     yarn android
   ```
 
-## Running Backend Server Guidelines:
+## 🧑‍💻 Running Backend Server Guidelines:
 
 
 ### Setting up Server locally
@@ -74,4 +74,8 @@ The instructions are a bit different depending on your development operating sys
   ```bash
     yarn start:dev
   ```
- 
+
+### 💡 Future Plans
+  - Using `@react-native-async-storage/async-storage` to store products data offline to process orders without internet connection.
+  - Integrating Mi Dukaan app with physical payment machines for automatic amount entering and swift transactions user experience.
+  - Add more features to tracking like: filters sort by date.
